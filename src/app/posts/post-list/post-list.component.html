@@ -1,11 +1,10 @@
 <mat-accordion multi="true" *ngIf="posts.length>0">
   <mat-expansion-panel *ngFor="let post of posts">
-    <label> {{post.label}}</label>
+    <label> Label: {{post.label.name}}</label>
     <mat-expansion-panel-header>
       {{post.title}}
     </mat-expansion-panel-header>
-    <p>{{post.content}}</p>
-    <label> {{post.label}}</label>
+    <p>Content: {{post.content}}</p>
 
     <mat-action-row>
       <a mat-raised-button color="accent" [routerLink]="['/edit', post.id]">Edit</a>

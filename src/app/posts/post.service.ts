@@ -52,10 +52,10 @@ export class PostService{
   }
 
   getPost(id: string){
-    return this.http.get<{_id: string, title: string, content: string, label: string}>("http://localhost:3000/api/posts/" + id);
+    return this.http.get<{_id: string, title: string, content: string, label: object}>("http://localhost:3000/api/posts/" + id);
   }
 
-  addPost(title: string, content: string, label: string){
+  addPost(title: string, content: string, label: object){
     const post={id:null, title: title, content: content, label: label};
 
     this.http
@@ -81,7 +81,7 @@ export class PostService{
     });
 
   }
-  updatePost(id: string, title:string, content:string, label: string){
+  updatePost(id: string, title:string, content:string, label: object){
     const post={id:id, title: title, content:content, label: label};
     this.http.put("http://localhost:3000/api/posts/" + id, post).subscribe(response=>{
       const updatedPosts= [...this.posts];

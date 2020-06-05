@@ -12,7 +12,7 @@ import {Subscription} from 'rxjs';
   styleUrls: ['./post-create.component.css']
 })
 export class PostCreateComponent implements OnInit{
-  labels: Labels[]=[{id: "1", name: "temp"}];
+  labels: Labels[]=[];
   enteredContent='';
   enteredTitle='';
   private mode='create';

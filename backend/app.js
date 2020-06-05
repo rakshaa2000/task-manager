@@ -75,7 +75,7 @@ app.delete("/api/posts/:id", (req, res, next) => {
 });
 
 app.use('/api/posts',(req,res,next)=>{
-  Post.find().then(documents=>{
+  Post.find().populate('label','name').then(documents=>{
     res.status(200).json({
       message:'Posts fetched successfully',
       posts: documents
