@@ -9,10 +9,12 @@ import {MatExpansionModule} from '@angular/material/expansion';
 import { HttpClientModule } from '@angular/common/http';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatNativeDateModule} from '@angular/material/core';
+import {MatSelectModule} from '@angular/material/select';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { PostCreateComponent } from './posts/post-create/post-create.component';
+import { LabelCreateComponent } from './posts/label-create/label-create.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HeaderComponent } from './posts/header/header.component';
 import { PostListComponent } from './posts/post-list/post-list.component';
@@ -21,6 +23,7 @@ import { PostListComponent } from './posts/post-list/post-list.component';
   declarations: [
     AppComponent,
     PostCreateComponent,
+    LabelCreateComponent,
     HeaderComponent,
     PostListComponent
   ],
@@ -36,7 +39,8 @@ import { PostListComponent } from './posts/post-list/post-list.component';
     MatExpansionModule,
     HttpClientModule,
     MatDatepickerModule,
-    MatNativeDateModule
+    MatNativeDateModule,
+    MatSelectModule
   ],
   providers: [],
   bootstrap: [AppComponent]
