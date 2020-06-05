@@ -4,6 +4,7 @@ const bodyParser= require('body-parser');
 const mongoose= require('mongoose');
 
 const Post=require('./models/post');
+const Label=require('./models/label');
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));
@@ -34,7 +35,8 @@ app.get("/api/posts/:id", (req,res,next)=>{
 app.post("/api/posts",(req,res,next)=>{
   const post= new Post({
     title: req.body.title,
-    content: req.body.content
+    content: req.body.content,
+    label: req.body.label,
   });
   post.save();
   res.status(201).json({
@@ -42,11 +44,22 @@ app.post("/api/posts",(req,res,next)=>{
   });
 });
 
+app.post("/api/labels",(req,res,next)=>{
+  const post= new Label({
+    name: req.body.name,
+  });
+  post.save();
+  res.status(201).json({
+    message:"Label added successfully"
+  });
+});
+
 app.put("/api/posts/:id", (req,res, next)=>{
   const post= new Post({
     _id: req.body.id,
     title: req.body.title,
-    content: req.body.content
+    content: req.body.content,
+    label: req.body.label,
   });
   Post.updateOne({_id: req.params.id}, post).then(result=>{
     res.status(200).json({message: "Update successful!"});
@@ -65,6 +78,16 @@ app.use('/api/posts',(req,res,next)=>{
   Post.find().then(documents=>{
     res.status(200).json({
       message:'Posts fetched successfully',
+      posts: documents
+    });
+  });
+  // next();
+});
+
+app.use('/api/labels',(req,res,next)=>{
+  Label.find().then(documents=>{
+    res.status(200).json({
+      message:'Labels fetched successfully',
       posts: documents
     });
   });
