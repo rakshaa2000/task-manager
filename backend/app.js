@@ -31,6 +31,16 @@ app.get("/api/posts/:id", (req,res,next)=>{
     }
   });
 });
+app.get("/api/labels/:id", (req,res,next)=>{
+  Label.findById(req.params.id).then(label=>{
+    if(label){
+      res.status(200).json(label);
+    }
+    else{
+      res.status(404).json({message: "Label not found"});
+    }
+  });
+});
 
 app.post("/api/posts",(req,res,next)=>{
   const post= new Post({
@@ -75,7 +85,7 @@ app.delete("/api/posts/:id", (req, res, next) => {
 });
 
 app.use('/api/posts',(req,res,next)=>{
-  Post.find().then(documents=>{
+  Post.find().populate('label','name').then(documents=>{
     res.status(200).json({
       message:'Posts fetched successfully',
       posts: documents
@@ -88,7 +98,7 @@ app.use('/api/labels',(req,res,next)=>{
   Label.find().then(documents=>{
     res.status(200).json({
       message:'Labels fetched successfully',
-      posts: documents
+      labels: documents
     });
   });
   // next();
