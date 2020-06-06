@@ -27,8 +27,8 @@ export class PostCreateComponent implements OnInit{
     this.label.getLabels();
         this.labelSub=this.label.getLabelUpdateListener().subscribe((labels: Labels[])=>{
           this.labels=labels;
-          // console.log("final labels: "+JSON.stringify(this.labels))
-        })
+          console.log("final labels: "+JSON.stringify(this.labels))
+        });
     this.route.paramMap.subscribe((paramMap: ParamMap)=>{
       if(paramMap.has('postId')){
         this.mode='edit';
@@ -48,8 +48,8 @@ export class PostCreateComponent implements OnInit{
       return;
     }
     if(this.mode==='create'){
-      this.postsService.addPost(form.value.title,form.value.content,form.value.selected);
-      console.log("new post: "+form.value.title+", "+form.value.selected);
+      this.postsService.addPost(form.value.title,form.value.content,form.value.label);
+      console.log("new post: "+form.value.title+", "+form.value.label);
       form.resetForm();
     }
     else{
