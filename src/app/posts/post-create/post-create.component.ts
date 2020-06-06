@@ -15,6 +15,7 @@ export class PostCreateComponent implements OnInit{
   labels: Labels[]=[];
   enteredContent='';
   enteredTitle='';
+  selected='';
   private mode='create';
   private postId: string;
   private labelSub: Subscription;
@@ -23,6 +24,11 @@ export class PostCreateComponent implements OnInit{
   constructor(public postsService: PostService, public label:PostService, public route: ActivatedRoute){}
 
   ngOnInit(){
+    this.label.getLabels();
+        this.labelSub=this.label.getLabelUpdateListener().subscribe((labels: Labels[])=>{
+          this.labels=labels;
+          // console.log("final labels: "+JSON.stringify(this.labels))
+        })
     this.route.paramMap.subscribe((paramMap: ParamMap)=>{
       if(paramMap.has('postId')){
         this.mode='edit';
@@ -34,11 +40,6 @@ export class PostCreateComponent implements OnInit{
       else{
         this.mode='create';
         this.postId=null;
-        this.label.getLabels();
-        this.labelSub=this.label.getLabelUpdateListener().subscribe((labels: Labels[])=>{
-          this.labels=labels;
-        })
-        console.log(this.labels)
       }
     });
   }
@@ -47,7 +48,8 @@ export class PostCreateComponent implements OnInit{
       return;
     }
     if(this.mode==='create'){
-      this.postsService.addPost(form.value.title,form.value.content,form.value.label);
+      this.postsService.addPost(form.value.title,form.value.content,form.value.selected);
+      console.log("new post: "+form.value.title+", "+form.value.selected);
       form.resetForm();
     }
     else{

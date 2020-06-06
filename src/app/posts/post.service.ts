@@ -35,7 +35,7 @@ export class PostService{
     .pipe(map((labelData)=>{
       return labelData.labels.map(label=>{
         return {
-        name: label.name,
+        name: label,
       };
     });
     }))
@@ -54,9 +54,12 @@ export class PostService{
   getPost(id: string){
     return this.http.get<{_id: string, title: string, content: string, label: object}>("http://localhost:3000/api/posts/" + id);
   }
+  getLabel(id: string){
+    return this.http.get<{_id: string, name: string}>("http://localhost:3000/api/labels/" + id);
+  }
 
-  addPost(title: string, content: string, label: object){
-    const post={id:null, title: title, content: content, label: label};
+  addPost(title: string, content: string, labelid: string){
+    const post={id:null, title: title, content: content, label: this.getLabel(labelid)};
 
     this.http
     .post<{message: string, postId: string}>('http://localhost:3000/api/posts', post).subscribe(responseData=>{

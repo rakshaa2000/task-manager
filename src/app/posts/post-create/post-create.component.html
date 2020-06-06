@@ -11,18 +11,15 @@
       <mat-error *ngIf="content.invalid">Please enter a valid Content</mat-error>
     </mat-form-field>
 
-    <!--mat-form-field>
-      <input matInput type="text" name="label" [ngModel]="post?.label" #label="ngModel" placeholder="Post Label:">
-      <mat-error *ngIf="label.invalid">Please enter a valid label</mat-error>
-    </mat-form-field-->
 
     <mat-form-field>
       <mat-label>Label</mat-label>
-      <mat-select>
-        <mat-option *ngFor="let label of labels" [value]="label.id">
-          {{label.name}} ( id={{label.id}} )
+      <mat-select name="label" [(ngModel)]="selected">
+        <mat-option *ngFor="let label of labels" [value]="label.name.id">
+          {{label.name.name}} 
         </mat-option>
       </mat-select>
+      <p>You selected: {{selected}}</p>
     </mat-form-field>
 
     <mat-form-field>
