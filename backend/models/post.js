@@ -4,8 +4,9 @@ const postSchema= mongoose.Schema({
   title: {type: String, required: true},
   content: {type: String, required: true},
   label: {type: String, required: true},
-  duedate: {type: Date},
-  completed: {type: Boolean}
+  completed: {type: String},
+  duedate: {type: Date}
+
 });
 
 module.exports=mongoose.model('Post', postSchema);

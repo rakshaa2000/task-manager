@@ -23,8 +23,8 @@
       <mat-expansion-panel *ngFor="let post of posts">
         <!-- <p>Inside</p> -->
         <!-- <ng-template *ngIf="post.label==='work'"> -->
-        <mat-expansion-panel-header *ngIf="!post.completed"><mat-checkbox color="primary" [checked]="post.completed" (change)="onComplete(post, $event);" >
-          {{post.title}}</mat-checkbox>
+        <mat-expansion-panel-header *ngIf="!post.completed">
+          {{post.title}}
         </mat-expansion-panel-header>
         <p>Content: {{post.content}}</p>
         <p>Duedate: {{post.duedate}}</p>
@@ -33,6 +33,7 @@
         <mat-action-row>
           <a mat-raised-button color="accent" [routerLink]="['/edit', post.id]">Edit</a>
           <button mat-raised-button color="warn" (click)="onDelete(post.id)">Delete</button>
+          <button mat-raised-button (click)="onComplete(post, $event)">Archive</button>
         </mat-action-row>
       </mat-expansion-panel>
       </mat-accordion>
