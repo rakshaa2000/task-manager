@@ -3,4 +3,5 @@ export interface Posts{
   title: string;
   content: string;
   label: string;
+  duedate: Date;
 }

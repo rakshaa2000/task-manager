@@ -34,7 +34,7 @@ export class PostCreateComponent implements OnInit{
         this.mode='edit';
         this.postId=paramMap.get('postId');
         this.postsService.getPost(this.postId).subscribe(postData=>{
-          this.post={id: postData._id, title: postData.title, content: postData.content, label: postData.label};
+          this.post={id: postData._id, title: postData.title, content: postData.content, label: postData.label, duedate: postData.duedate};
         });
       }
       else{
@@ -53,7 +53,7 @@ export class PostCreateComponent implements OnInit{
       form.resetForm();
     }
     else{
-      this.postsService.updatePost(this.postId,form.value.title,form.value.content,form.value.label);
+      this.postsService.updatePost(this.postId,form.value.title,form.value.content,form.value.label, form.value.picker);
     }
 
   }
