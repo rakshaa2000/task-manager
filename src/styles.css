@@ -11,3 +11,7 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif;}
 .mat-content > mat-panel-description {
 flex: 0 0 auto;
 }
+.mat-tab-label{
+  font-size: 18px ;
+  color: white;
+  }
