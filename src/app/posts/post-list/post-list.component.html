@@ -20,8 +20,8 @@
   <mat-expansion-panel *ngFor="let post of posts">
     <!-- <p>Inside</p> -->
     <!-- <ng-template *ngIf="post.label==='work'"> -->
-    <mat-expansion-panel-header *ngIf="post.label==='work'">
-      {{post.title}}
+    <mat-expansion-panel-header *ngIf="post.label==='work'"><mat-checkbox color="primary">
+      {{post.title}}</mat-checkbox>
     </mat-expansion-panel-header>
     <p>Content: {{post.content}}</p>
   <!-- </ng-template> -->
@@ -37,8 +37,8 @@
     <mat-expansion-panel *ngFor="let post of posts">
       <!-- <p>Inside</p> -->
       <!-- <ng-template *ngIf="post.label==='work'"> -->
-      <mat-expansion-panel-header *ngIf="post.label==='personal'">
-        {{post.title}}
+      <mat-expansion-panel-header *ngIf="post.label==='personal'"><mat-checkbox color="primary">
+        {{post.title}}</mat-checkbox>
       </mat-expansion-panel-header>
       <p>Content: {{post.content}}</p>
     <!-- </ng-template> -->
@@ -54,8 +54,8 @@
       <mat-expansion-panel *ngFor="let post of posts">
         <!-- <p>Inside</p> -->
         <!-- <ng-template *ngIf="post.label==='work'"> -->
-        <mat-expansion-panel-header *ngIf="post.label==='shopping'">
-          {{post.title}}
+        <mat-expansion-panel-header *ngIf="post.label==='shopping'"><mat-checkbox color="primary">
+          {{post.title}}</mat-checkbox>
         </mat-expansion-panel-header>
         <p>Content: {{post.content}}</p>
       <!-- </ng-template> -->
@@ -71,8 +71,8 @@
       <mat-expansion-panel *ngFor="let post of posts">
         <!-- <p>Inside</p> -->
         <!-- <ng-template *ngIf="post.label==='work'"> -->
-        <mat-expansion-panel-header *ngIf="post.label==='others'">
-          {{post.title}}
+        <mat-expansion-panel-header *ngIf="post.label==='others'"><mat-checkbox color="primary">
+          {{post.title}}</mat-checkbox>
         </mat-expansion-panel-header>
         <p>Content: {{post.content}}</p>
       <!-- </ng-template> -->
