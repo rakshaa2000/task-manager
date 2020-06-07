@@ -34,7 +34,7 @@ export class PostCreateComponent implements OnInit{
         this.mode='edit';
         this.postId=paramMap.get('postId');
         this.postsService.getPost(this.postId).subscribe(postData=>{
-          this.post={id: postData._id, title: postData.title, content: postData.content, label: postData.label};
+          this.post={id: postData._id, title: postData.title, content: postData.content, label: postData.label, duedate: postData.duedate};
         });
       }
       else{
@@ -48,12 +48,12 @@ export class PostCreateComponent implements OnInit{
       return;
     }
     if(this.mode==='create'){
-      this.postsService.addPost(form.value.title,form.value.content,form.value.label);
-      console.log("new post: "+form.value.title+", "+form.value.label);
+      this.postsService.addPost(form.value.title,form.value.content,form.value.label, form.value.picker);
+      console.log("new post: "+form.value.title+", "+form.value.label+", "+form.value.picker);
       form.resetForm();
     }
     else{
-      this.postsService.updatePost(this.postId,form.value.title,form.value.content,form.value.label);
+      this.postsService.updatePost(this.postId,form.value.title,form.value.content,form.value.label, form.value.picker);
     }
 
   }

@@ -57,6 +57,7 @@ app.post("/api/posts",(req,res,next)=>{
     title: req.body.title,
     content: req.body.content,
     label: req.body.label,
+    duedate: req.body.duedate,
   });
   post.save();
   res.status(201).json({
@@ -80,6 +81,7 @@ app.put("/api/posts/:id", (req,res, next)=>{
     title: req.body.title,
     content: req.body.content,
     label: req.body.label,
+    duedate: req.body.duedate,
   });
   Post.updateOne({_id: req.params.id}, post).then(result=>{
     res.status(200).json({message: "Update successful!"});
