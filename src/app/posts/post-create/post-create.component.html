@@ -11,9 +11,10 @@
       <mat-error *ngIf="content.invalid">Please enter a valid Content</mat-error>
     </mat-form-field>
 
-
-    <mat-form-field>
+    <div class="in">
+    <mat-form-field class="in">
       <mat-label>Label</mat-label>
+      <br>
       <mat-select name="label" [ngModel]="post?.label">
           <mat-option value="personal">Personal</mat-option>
           <mat-option value="work">Work</mat-option>
@@ -22,10 +23,11 @@
       </mat-select>
       <!-- <p>You selected: {{selected}}</p> -->
     </mat-form-field>
-
-    <mat-form-field>
+    &nbsp;&nbsp;&nbsp;&nbsp;
+    <mat-form-field class="in">
       <mat-label>Status</mat-label>
-      <mat-select name="completed" [ngModel]="post?.completed">
+      <br>
+      <mat-select name="completed" [ngModel]="post?.completed" >
           <mat-option value="New">New</mat-option>
           <mat-option value="In-progress">In Progress</mat-option>
           <mat-option value="Completed">Completed</mat-option>
@@ -33,16 +35,15 @@
       </mat-select>
       <!-- <p>You selected: {{selected}}</p> -->
     </mat-form-field>
-
-    <mat-form-field>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <mat-form-field class="in">
       <mat-label>Due Date</mat-label>
       <input matInput [min]="minDate"[matDatepicker]="picker" [ngModel]="post?.duedate" name="picker">
       <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
       <mat-datepicker #picker></mat-datepicker>
     </mat-form-field>
-
-    <hr>
-
+  </div>
+    <br>
     <button mat-raised-button color="accent" type="submit">Save Post</button>
 
   </form>

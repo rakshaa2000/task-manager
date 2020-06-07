@@ -1,4 +1,8 @@
+.in{
+  display: inline-flex;
+}
 mat-form-field,
 textarea{
   width: 100%;
 }
+
