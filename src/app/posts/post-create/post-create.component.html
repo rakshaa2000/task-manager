@@ -2,12 +2,12 @@
   <form (submit)="onSavePost(postForm)" #postForm="ngForm">
 
     <mat-form-field>
-      <input matInput type="text" name="title" [ngModel]="post?.title" required  minlength="10" #title="ngModel" placeholder="Post Title:">
+      <input matInput type="text" name="title" [ngModel]="post?.title" required  minlength="10" #title="ngModel" placeholder="Task Title:">
       <mat-error *ngIf="title.invalid">Please enter a valid title</mat-error>
     </mat-form-field>
 
     <mat-form-field>
-      <textarea matInput rows="6" name="content" [ngModel]="post?.content" required #content="ngModel" placeholder="Post Content:"></textarea>
+      <textarea matInput rows="6" name="content" [ngModel]="post?.content" required #content="ngModel" placeholder="Task Description:"></textarea>
       <mat-error *ngIf="content.invalid">Please enter a valid Content</mat-error>
     </mat-form-field>
 
@@ -36,7 +36,7 @@
 
     <mat-form-field>
       <mat-label>Due Date</mat-label>
-      <input matInput [matDatepicker]="picker" [ngModel]="post?.duedate" name="picker">
+      <input matInput [min]="minDate"[matDatepicker]="picker" [ngModel]="post?.duedate" name="picker">
       <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
       <mat-datepicker #picker></mat-datepicker>
     </mat-form-field>

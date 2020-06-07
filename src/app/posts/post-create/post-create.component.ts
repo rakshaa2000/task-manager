@@ -20,6 +20,7 @@ export class PostCreateComponent implements OnInit{
   private postId: string;
   private labelSub: Subscription;
   post: Posts;
+  minDate= new Date();
 
   constructor(public postsService: PostService, public label:PostService, public route: ActivatedRoute){}
 
