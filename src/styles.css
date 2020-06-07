@@ -2,7 +2,7 @@
 
 html, body { height: 100%;
   background-color:black;
-  background-image: linear-gradient(black,blueviolet);
+  background-image: linear-gradient(blueviolet,rgb(255, 153, 0));
 }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif;}
 .right-aligned-header > .mat-content {

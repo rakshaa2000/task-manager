@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {Posts} from '../post-model';
 import { NgForm } from '@angular/forms';
+import {FormControl, FormGroup, Validators} from '@angular/forms';
 import { PostService } from '../post.service';
 import { ActivatedRoute, ParamMap } from '@angular/router';
 import { Labels } from '../label-model';
