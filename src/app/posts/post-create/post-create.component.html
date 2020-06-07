@@ -2,7 +2,7 @@
   <form (submit)="onSavePost(postForm)" #postForm="ngForm">
 
     <mat-form-field>
-      <input matInput type="text" name="title" [ngModel]="post?.title" required  minlength="10" #title="ngModel" placeholder="Task Title:">
+      <input matInput type="text" name="title" [ngModel]="post?.title" required  minlength="10" minlength="80" #title="ngModel" placeholder="Task Title: (10-80 characters)">
       <mat-error *ngIf="title.invalid">Please enter a valid title</mat-error>
     </mat-form-field>
 
@@ -38,10 +38,9 @@
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
     <mat-form-field class="in">
       <mat-label>Due Date</mat-label>
-      <input #picker matInput [min]="minDate"[matDatepicker]="picker" [ngModel]="post?.duedate" name="picker">
+      <input disabled matInput [min]="minDate"[matDatepicker]="picker" [ngModel]="post?.duedate" name="picker" >
       <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-      <mat-datepicker #picker></mat-datepicker>
-      <!-- <mat-error>Please enter a valid Content</mat-error> -->
+      <mat-datepicker #picker disabled="false"></mat-datepicker>
     </mat-form-field>
   </div>
     <br>
