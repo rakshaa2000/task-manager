@@ -53,8 +53,8 @@ export class PostCreateComponent implements OnInit{
       form.resetForm();
     }
     else{
-      this.postsService.updatePost(this.postId,form.value.title,form.value.content,form.value.label, form.value.picker, false);
+      this.postsService.updatePost(this.postId,form.value.title,form.value.content,form.value.label, form.value.picker, this.post.completed);
     }
-
+    alert("Post saved successfully");
   }
 }

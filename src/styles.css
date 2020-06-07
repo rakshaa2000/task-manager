@@ -2,5 +2,6 @@
 
 html, body { height: 100%;
   background-color:black;
-  background-image: linear-gradient(black,blueviolet);}
+  background-image: linear-gradient(black,blueviolet);
+}
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
