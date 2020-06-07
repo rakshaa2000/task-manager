@@ -13,8 +13,7 @@ import {MatSelectModule} from '@angular/material/select';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import {MatTabsModule} from '@angular/material/tabs';
 import {MatIconModule} from '@angular/material/icon';
-import {FormControl, FormGroup, Validators, ReactiveFormsModule} from '@angular/forms';
-import {NgControl} from '@angular/forms';
+
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -50,9 +49,7 @@ import { DatePipe } from '@angular/common';
     MatSelectModule,
     MatCheckboxModule,
     MatTabsModule,
-    MatIconModule,
-    FormControl, FormGroup, Validators,
-    ReactiveFormsModule
+    MatIconModule
   ],
   providers: [DatePipe],
   bootstrap: [AppComponent]
