@@ -25,6 +25,7 @@ export class PostService{
           id:post._id,
           label: post.label,
           duedate: this.datepipe.transform(post.duedate, 'dd/MM/yyyy'),
+          duedate_raw: post.duedate,
           completed: post.completed
         };
       });
