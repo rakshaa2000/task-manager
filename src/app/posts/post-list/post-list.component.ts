@@ -22,11 +22,11 @@ postsPersonal: Posts[]=[];
 private postSubPersonal: Subscription;
   constructor(public post:PostService){}
   ngOnInit(){
-    this.post.getLabeledPosts("others");
+    this.post.getPosts();
     this.postSub=this.post.getPostUpdateListener().subscribe((posts: Posts[])=>{
       this.posts=posts;
     })
-    
+
   }
   onDelete(postId: string){
     this.post.deletePost(postId);

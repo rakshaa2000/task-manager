@@ -30,23 +30,23 @@ export class PostService{
       this.postsUpdated.next([...this.posts]);
     });
   }
-  getLabeledPosts(label: string){
-    this.http.get<{message:string,posts:any}>('http://localhost:3000/api/posts/label/'+label)
-    .pipe(map((postData)=>{
-      return postData.posts.map(post=>{
-        return {
-        title: post.title,
-        content: post.content,
-        id:post._id,
-        label: post.label
-      };
-    });
-    }))
-    .subscribe((transformedposts)=>{
-    this.posts=transformedposts;
-    this.postsUpdated.next([...this.posts]);
-  });
-}
+  // getLabeledPosts(label: string){
+  //   this.http.get<{message:string,posts:any}>('http://localhost:3000/api/posts/label/'+label)
+  //   .pipe(map((postData)=>{
+  //     return postData.posts.map(post=>{
+  //       return {
+  //       title: post.title,
+  //       content: post.content,
+  //       id:post._id,
+  //       label: post.label
+  //     };
+  //   });
+  //   }))
+  //   .subscribe((transformedposts)=>{
+  //   this.posts=transformedposts;
+  //   this.postsUpdated.next([...this.posts]);
+  //   });
+  // }
 //   getLabels(){
 //     this.http.get<{message:string,labels:any}>('http://localhost:3000/api/labels')
 //     .pipe(map((labelData)=>{
