@@ -4,7 +4,7 @@
       <mat-expansion-panel *ngFor="let post of posts">
         <!-- <p>Inside</p> -->
         <!-- <ng-template *ngIf="post.label==='work'"> -->
-        <mat-expansion-panel-header *ngIf="!post.completed">
+        <mat-expansion-panel-header *ngIf="post.completed!=='completed'">
           {{post.title}}
         </mat-expansion-panel-header>
         <p>Description: {{post.content}}</p>
@@ -15,7 +15,7 @@
         <mat-action-row>
           <a mat-raised-button color="accent" [routerLink]="['/edit', post.id]">Edit</a>
           <button mat-raised-button color="warn" (click)="onDelete(post.id)">Delete</button>
-          <button mat-raised-button (click)="onComplete(post, $event)">Archive</button>
+          <!-- <button mat-raised-button (click)="onComplete(post, $event)">Archive</button> -->
         </mat-action-row>
       </mat-expansion-panel>
       </mat-accordion>
@@ -25,7 +25,7 @@
       <mat-expansion-panel *ngFor="let post of posts">
         <!-- <p>Inside</p> -->
         <!-- <ng-template *ngIf="post.label==='work'"> -->
-        <mat-expansion-panel-header *ngIf="post.completed">
+        <mat-expansion-panel-header *ngIf="post.completed==='completed'">
           {{post.title}}
         </mat-expansion-panel-header>
         <p>Content: {{post.content}}</p>
@@ -39,6 +39,7 @@
       </mat-expansion-panel>
       </mat-accordion>
     </mat-tab>
+
     <mat-tab label="Work">
     <mat-accordion multi="true" *ngIf="posts.length>0">
     <mat-expansion-panel *ngFor="let post of posts">

@@ -48,12 +48,12 @@ export class PostCreateComponent implements OnInit{
       return;
     }
     if(this.mode==='create'){
-      this.postsService.addPost(form.value.title,form.value.content,form.value.label, form.value.picker);
+      this.postsService.addPost(form.value.title,form.value.content,form.value.label, form.value.picker, form.value.status);
       console.log("new post: "+form.value.title+", "+form.value.label+", "+form.value.picker);
       form.resetForm();
     }
     else{
-      this.postsService.updatePost(this.postId,form.value.title,form.value.content,form.value.label, form.value.picker, this.post.completed);
+      this.postsService.updatePost(this.postId,form.value.title,form.value.content,form.value.label, form.value.picker, form.value.completed);
     }
     alert("Post saved successfully");
   }

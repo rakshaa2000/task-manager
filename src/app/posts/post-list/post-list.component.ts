@@ -32,13 +32,13 @@ private postSubPersonal: Subscription;
   onDelete(postId: string){
     this.post.deletePost(postId);
   }
-  onComplete(posts: Posts, e){
-    console.log(e.checked);
-    posts.completed=e.checked;
-    this.post.completePost(posts);
-    console.log(JSON.stringify(posts));
-    // event.stopPropagation();
-  }
+  // onComplete(posts: Posts, e){
+  //   console.log(e.checked);
+  //   posts.completed=e.checked;
+  //   this.post.completePost(posts);
+  //   console.log(JSON.stringify(posts));
+  //   // event.stopPropagation();
+  // }
   ngOnDestroy(){
     this.postSub.unsubscribe();
   }

@@ -6,7 +6,6 @@ const postSchema= mongoose.Schema({
   label: {type: String, required: true},
   completed: {type: String},
   duedate: {type: Date}
-
 });
 
 module.exports=mongoose.model('Post', postSchema);
