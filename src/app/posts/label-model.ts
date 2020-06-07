@@ -1,5 +1,5 @@
-export interface Labels{
-    id: string;
-    name: string;
-  }
+// export interface Labels{
+//     id: string;
+//     name: string;
+//   }
   

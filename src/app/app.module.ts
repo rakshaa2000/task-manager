@@ -18,7 +18,7 @@ import {MatIconModule} from '@angular/material/icon';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { PostCreateComponent } from './posts/post-create/post-create.component';
-import { LabelCreateComponent } from './posts/label-create/label-create.component';
+// import { LabelCreateComponent } from './posts/label-create/label-create.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HeaderComponent } from './posts/header/header.component';
 import { PostListComponent } from './posts/post-list/post-list.component';
@@ -29,7 +29,7 @@ import { DatePipe } from '@angular/common';
   declarations: [
     AppComponent,
     PostCreateComponent,
-    LabelCreateComponent,
+    // LabelCreateComponent,
     HeaderComponent,
     PostListComponent
   ],
