@@ -5,14 +5,16 @@ import { Injectable } from '@angular/core';
 import {Subject} from 'rxjs';
 import {HttpClient} from '@angular/common/http';
 import { map } from 'rxjs/operators';
+import { DatePipe } from '@angular/common';
 
 @Injectable({providedIn: "root"})
 export class PostService{
   private posts: Posts[]=[];
   private labels: Labels[]=[];
+  providers: [DatePipe]
   private postsUpdated= new Subject<Posts[]>();
   private labelsUpdated= new Subject<Labels[]>();
-  constructor(private http: HttpClient){}
+  constructor(private http: HttpClient, public datepipe: DatePipe){}
   getPosts(){
       this.http.get<{message:string,posts:any}>('http://localhost:3000/api/posts')
       .pipe(map((postData)=>{
@@ -21,7 +23,8 @@ export class PostService{
           title: post.title,
           content: post.content,
           id:post._id,
-          label: post.label
+          label: post.label,
+          duedate: this.datepipe.transform(post.duedate, 'dd/MM/yyyy'),
         };
       });
       }))
@@ -75,8 +78,8 @@ export class PostService{
   //   return this.http.get<{_id: string, name: string}>("http://localhost:3000/api/labels/" + id);
   // }
 
-  addPost(title: string, content: string, labelid: string){
-    const post={id:null, title: title, content: content, label: labelid};
+  addPost(title: string, content: string, labelid: string, duedate: Date){
+    const post={id:null, title: title, content: content, label: labelid, duedate: duedate};
 
     this.http
     .post<{message: string, postId: string}>('http://localhost:3000/api/posts', post).subscribe(responseData=>{

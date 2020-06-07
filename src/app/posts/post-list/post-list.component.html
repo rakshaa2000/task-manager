@@ -6,6 +6,7 @@
       {{post.title}}</mat-checkbox>
     </mat-expansion-panel-header>
     <p>Content: {{post.content}}</p>
+    <p> Due Date: {{post.duedate}}</p>
 
     <mat-action-row>
       <a mat-raised-button color="accent" [routerLink]="['/edit', post.id]">Edit</a>

@@ -20,6 +20,7 @@ import { LabelCreateComponent } from './posts/label-create/label-create.componen
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HeaderComponent } from './posts/header/header.component';
 import { PostListComponent } from './posts/post-list/post-list.component';
+import { DatePipe } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -46,7 +47,7 @@ import { PostListComponent } from './posts/post-list/post-list.component';
     MatCheckboxModule,
     MatTabsModule
   ],
-  providers: [],
+  providers: [DatePipe],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

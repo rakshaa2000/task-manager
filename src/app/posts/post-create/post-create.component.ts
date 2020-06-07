@@ -48,8 +48,8 @@ export class PostCreateComponent implements OnInit{
       return;
     }
     if(this.mode==='create'){
-      this.postsService.addPost(form.value.title,form.value.content,form.value.label);
-      console.log("new post: "+form.value.title+", "+form.value.label);
+      this.postsService.addPost(form.value.title,form.value.content,form.value.label, form.value.picker);
+      console.log("new post: "+form.value.title+", "+form.value.label+", "+form.value.picker);
       form.resetForm();
     }
     else{
