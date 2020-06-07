@@ -4,4 +4,5 @@ export interface Posts{
   content: string;
   label: string;
   duedate: Date;
+  completed: Boolean;
 }

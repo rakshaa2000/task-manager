@@ -25,11 +25,19 @@ private postSubPersonal: Subscription;
     this.post.getPosts();
     this.postSub=this.post.getPostUpdateListener().subscribe((posts: Posts[])=>{
       this.posts=posts;
-    })
+      console.log(JSON.stringify(this.posts));
+    });
 
   }
   onDelete(postId: string){
     this.post.deletePost(postId);
+  }
+  onComplete(posts: Posts, e){
+    console.log(e.checked);
+    posts.completed=e.checked;
+    this.post.completePost(posts);
+    console.log(JSON.stringify(posts));
+    // event.stopPropagation();
   }
   ngOnDestroy(){
     this.postSub.unsubscribe();

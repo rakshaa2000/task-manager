@@ -5,6 +5,7 @@ const postSchema= mongoose.Schema({
   content: {type: String, required: true},
   label: {type: String, required: true},
   duedate: {type: Date},
+  completed: {type: Boolean}
 });
 
 module.exports=mongoose.model('Post', postSchema);

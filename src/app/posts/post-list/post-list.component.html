@@ -23,11 +23,12 @@
       <mat-expansion-panel *ngFor="let post of posts">
         <!-- <p>Inside</p> -->
         <!-- <ng-template *ngIf="post.label==='work'"> -->
-        <mat-expansion-panel-header><mat-checkbox color="primary" (click)="$event.stopPropagation()" >
+        <mat-expansion-panel-header><mat-checkbox color="primary" [checked]="post.completed" (change)="onComplete(post, $event);" >
           {{post.title}}</mat-checkbox>
         </mat-expansion-panel-header>
         <p>Content: {{post.content}}</p>
         <p>Duedate: {{post.duedate}}</p>
+        <!-- <p>Completed: {{post.completed}}</p> -->
       <!-- </ng-template> -->
         <mat-action-row>
           <a mat-raised-button color="accent" [routerLink]="['/edit', post.id]">Edit</a>
@@ -42,7 +43,7 @@
     <mat-expansion-panel *ngFor="let post of posts">
     <!-- <p>Inside</p> -->
     <!-- <ng-template *ngIf="post.label==='work'"> -->
-    <mat-expansion-panel-header *ngIf="post.label==='work'"><mat-checkbox color="primary" (click)="$event.stopPropagation()" >
+    <mat-expansion-panel-header *ngIf="post.label==='work'"><mat-checkbox color="primary" [checked]="post.completed" (click)="onComplete(post, $event);" >
       {{post.title}}</mat-checkbox>
     </mat-expansion-panel-header>
     <p>Content: {{post.content}}</p>
@@ -61,7 +62,7 @@
     <mat-expansion-panel *ngFor="let post of posts">
       <!-- <p>Inside</p> -->
       <!-- <ng-template *ngIf="post.label==='work'"> -->
-      <mat-expansion-panel-header *ngIf="post.label==='personal'"><mat-checkbox color="primary" (click)="$event.stopPropagation()" >
+      <mat-expansion-panel-header *ngIf="post.label==='personal'"><mat-checkbox color="primary" [checked]="post.completed" (click)="onComplete(post, $event);" >
         {{post.title}}</mat-checkbox>
       </mat-expansion-panel-header>
       <p>Content: {{post.content}}</p>
@@ -80,7 +81,7 @@
       <mat-expansion-panel *ngFor="let post of posts">
         <!-- <p>Inside</p> -->
         <!-- <ng-template *ngIf="post.label==='work'"> -->
-        <mat-expansion-panel-header *ngIf="post.label==='shopping'"><mat-checkbox color="primary" (click)="$event.stopPropagation()" >
+        <mat-expansion-panel-header *ngIf="post.label==='shopping' "><mat-checkbox color="primary" [checked]="post.completed" (click)="onComplete(post, $event);" >
           {{post.title}}</mat-checkbox>
         </mat-expansion-panel-header>
         <p>Content: {{post.content}}</p>
@@ -99,7 +100,7 @@
       <mat-expansion-panel *ngFor="let post of posts">
         <!-- <p>Inside</p> -->
         <!-- <ng-template *ngIf="post.label==='work'"> -->
-        <mat-expansion-panel-header *ngIf="post.label==='others'"><mat-checkbox color="primary" (click)="$event.stopPropagation()" >
+        <mat-expansion-panel-header *ngIf="post.label==='others'"><mat-checkbox color="primary" [checked]="post.completed" (click)="onComplete(post, $event);" >
           {{post.title}}</mat-checkbox>
         </mat-expansion-panel-header>
         <p>Content: {{post.content}}</p>
