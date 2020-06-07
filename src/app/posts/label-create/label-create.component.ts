@@ -40,7 +40,7 @@ export class LabelCreateComponent implements OnInit{
       return;
     }
     if(this.mode==='create'){
-      this.postsService.addLabel(form.value.name);
+      // this.postsService.addLabel(form.value.name);
       form.resetForm();
     }
     // else{

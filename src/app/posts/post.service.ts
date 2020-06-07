@@ -30,36 +30,53 @@ export class PostService{
       this.postsUpdated.next([...this.posts]);
     });
   }
-  getLabels(){
-    this.http.get<{message:string,labels:any}>('http://localhost:3000/api/labels')
-    .pipe(map((labelData)=>{
-      return labelData.labels.map(label=>{
+  getLabeledPosts(label: string){
+    this.http.get<{message:string,posts:any}>('http://localhost:3000/api/posts/label/'+label)
+    .pipe(map((postData)=>{
+      return postData.posts.map(post=>{
         return {
-        name: label,
+        title: post.title,
+        content: post.content,
+        id:post._id,
+        label: post.label
       };
     });
     }))
-    .subscribe((transformedlabels)=>{
-    this.labels=transformedlabels;
-    this.labelsUpdated.next([...this.labels]);
+    .subscribe((transformedposts)=>{
+    this.posts=transformedposts;
+    this.postsUpdated.next([...this.posts]);
   });
 }
+//   getLabels(){
+//     this.http.get<{message:string,labels:any}>('http://localhost:3000/api/labels')
+//     .pipe(map((labelData)=>{
+//       return labelData.labels.map(label=>{
+//         return {
+//         name: label,
+//       };
+//     });
+//     }))
+//     .subscribe((transformedlabels)=>{
+//     this.labels=transformedlabels;
+//     this.labelsUpdated.next([...this.labels]);
+//   });
+// }
   getPostUpdateListener(){
     return this.postsUpdated.asObservable();
   }
-  getLabelUpdateListener(){
-    return this.labelsUpdated.asObservable();
-  }
+  // getLabelUpdateListener(){
+  //   return this.labelsUpdated.asObservable();
+  // }
 
   getPost(id: string){
-    return this.http.get<{_id: string, title: string, content: string, label: object}>("http://localhost:3000/api/posts/" + id);
+    return this.http.get<{_id: string, title: string, content: string, label: string}>("http://localhost:3000/api/posts/label" + id);
   }
-  getLabel(id: string){
-    return this.http.get<{_id: string, name: string}>("http://localhost:3000/api/labels/" + id);
-  }
+  // getLabel(id: string){
+  //   return this.http.get<{_id: string, name: string}>("http://localhost:3000/api/labels/" + id);
+  // }
 
   addPost(title: string, content: string, labelid: string){
-    const post={id:null, title: title, content: content, label: this.getLabel(labelid)};
+    const post={id:null, title: title, content: content, label: labelid};
 
     this.http
     .post<{message: string, postId: string}>('http://localhost:3000/api/posts', post).subscribe(responseData=>{
@@ -71,20 +88,20 @@ export class PostService{
     });
 
   }
-  addLabel(title: string){
-    const post={id:null, name: title};
+  // addLabel(title: string){
+  //   const post={id:null, name: title};
 
-    this.http
-    .post<{message: string, postId: string}>('http://localhost:3000/api/labels', post).subscribe(responseData=>{
-      console.log(responseData.message);
-      const id = responseData.postId;
-      post.id = id;
-      this.labels.push(post);
-      this.postsUpdated.next([...this.posts]);
-    });
+  //   this.http
+  //   .post<{message: string, postId: string}>('http://localhost:3000/api/labels', post).subscribe(responseData=>{
+  //     console.log(responseData.message);
+  //     const id = responseData.postId;
+  //     post.id = id;
+  //     this.labels.push(post);
+  //     this.postsUpdated.next([...this.posts]);
+  //   });
 
-  }
-  updatePost(id: string, title:string, content:string, label: object){
+  // }
+  updatePost(id: string, title:string, content:string, label: string){
     const post={id:id, title: title, content:content, label: label};
     this.http.put("http://localhost:3000/api/posts/" + id, post).subscribe(response=>{
       const updatedPosts= [...this.posts];

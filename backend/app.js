@@ -31,16 +31,26 @@ app.get("/api/posts/:id", (req,res,next)=>{
     }
   });
 });
-app.get("/api/labels/:id", (req,res,next)=>{
-  Label.findById(req.params.id).then(label=>{
-    if(label){
-      res.status(200).json(label);
+app.get("/api/posts/label/:label", (req,res,next)=>{
+  Post.find({label: req.params.label}).then(post=>{
+    if(post){
+      res.status(200).json(post);
     }
     else{
-      res.status(404).json({message: "Label not found"});
+      res.status(404).json({message: "Post not found"});
     }
   });
 });
+// app.get("/api/labels/:id", (req,res,next)=>{
+//   Label.findById(req.params.id).then(label=>{
+//     if(label){
+//       res.status(200).json(label);
+//     }
+//     else{
+//       res.status(404).json({message: "Label not found"});
+//     }
+//   });
+// });
 
 app.post("/api/posts",(req,res,next)=>{
   const post= new Post({
@@ -54,15 +64,15 @@ app.post("/api/posts",(req,res,next)=>{
   });
 });
 
-app.post("/api/labels",(req,res,next)=>{
-  const post= new Label({
-    name: req.body.name,
-  });
-  post.save();
-  res.status(201).json({
-    message:"Label added successfully"
-  });
-});
+// app.post("/api/labels",(req,res,next)=>{
+//   const post= new Label({
+//     name: req.body.name,
+//   });
+//   post.save();
+//   res.status(201).json({
+//     message:"Label added successfully"
+//   });
+// });
 
 app.put("/api/posts/:id", (req,res, next)=>{
   const post= new Post({
@@ -85,7 +95,7 @@ app.delete("/api/posts/:id", (req, res, next) => {
 });
 
 app.use('/api/posts',(req,res,next)=>{
-  Post.find().populate('label','name').then(documents=>{
+  Post.find().then(documents=>{
     res.status(200).json({
       message:'Posts fetched successfully',
       posts: documents
