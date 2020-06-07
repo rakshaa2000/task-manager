@@ -29,7 +29,7 @@ private postSubPersonal: Subscription;
     this.postSub=this.post.getPostUpdateListener().subscribe((posts: Posts[])=>{
       this.posts=posts;
       console.log(JSON.stringify(this.posts));
-      if (this.date>this.posts[0].duedate)
+      if (this.date<this.posts[0].duedate)
       this.message="Your next task is due in "+this.posts[0].duedate;
     else
       this.message="Your next task is overdue from "+this.posts[0].duedate;
