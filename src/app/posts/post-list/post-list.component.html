@@ -16,8 +16,10 @@
 </mat-accordion> -->
 
   <!-- <br><br> -->
-  <mat-accordion multi="true" *ngIf="posts.length>0"><p>Work</p>
-  <mat-expansion-panel *ngFor="let post of posts">
+  <mat-tab-group>
+    <mat-tab label="Work">
+    <mat-accordion multi="true" *ngIf="posts.length>0">
+    <mat-expansion-panel *ngFor="let post of posts">
     <!-- <p>Inside</p> -->
     <!-- <ng-template *ngIf="post.label==='work'"> -->
     <mat-expansion-panel-header *ngIf="post.label==='work'"><mat-checkbox color="primary">
@@ -30,10 +32,12 @@
       <button mat-raised-button color="warn" (click)="onDelete(post.id)">Delete</button>
       <button mat-raised-button color="purple.A400">Archive</button>
     </mat-action-row>
-
   </mat-expansion-panel>
   </mat-accordion>
-  <mat-accordion multi="true" *ngIf="posts.length>0"><p>Personal</p>
+  </mat-tab>
+
+  <mat-tab label="Personal">
+  <mat-accordion multi="true" *ngIf="posts.length>0">
     <mat-expansion-panel *ngFor="let post of posts">
       <!-- <p>Inside</p> -->
       <!-- <ng-template *ngIf="post.label==='work'"> -->
@@ -47,10 +51,12 @@
         <button mat-raised-button color="warn" (click)="onDelete(post.id)">Delete</button>
         <button mat-raised-button color="purple.A400">Archive</button>
       </mat-action-row>
-
     </mat-expansion-panel>
     </mat-accordion>
-    <mat-accordion multi="true" *ngIf="posts.length>0"><p>Shopping</p>
+  </mat-tab>
+
+    <mat-tab label="Shopping">
+    <mat-accordion multi="true" *ngIf="posts.length>0">
       <mat-expansion-panel *ngFor="let post of posts">
         <!-- <p>Inside</p> -->
         <!-- <ng-template *ngIf="post.label==='work'"> -->
@@ -64,10 +70,12 @@
           <button mat-raised-button color="warn" (click)="onDelete(post.id)">Delete</button>
           <button mat-raised-button color="purple.A400">Archive</button>
         </mat-action-row>
-
       </mat-expansion-panel>
       </mat-accordion>
-    <mat-accordion multi="true" *ngIf="posts.length>0"><p>Others</p>
+    </mat-tab>
+
+      <mat-tab label="Others">
+      <mat-accordion multi="true" *ngIf="posts.length>0">
       <mat-expansion-panel *ngFor="let post of posts">
         <!-- <p>Inside</p> -->
         <!-- <ng-template *ngIf="post.label==='work'"> -->
@@ -81,7 +89,8 @@
           <button mat-raised-button color="warn" (click)="onDelete(post.id)">Delete</button>
           <button mat-raised-button color="purple.A400">Archive</button>
         </mat-action-row>
-
       </mat-expansion-panel>
       </mat-accordion>
+    </mat-tab>
+    </mat-tab-group>
 <p *ngIf="posts.length<=0" class="info-text mat-body-1">No posts added yet!</p>
