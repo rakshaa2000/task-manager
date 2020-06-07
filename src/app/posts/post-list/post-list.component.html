@@ -18,12 +18,12 @@
 
   <!-- <br><br> -->
   <mat-tab-group>
-    <mat-tab label="All">
+    <mat-tab label="To-do">
       <mat-accordion multi="true" *ngIf="posts.length>0">
       <mat-expansion-panel *ngFor="let post of posts">
         <!-- <p>Inside</p> -->
         <!-- <ng-template *ngIf="post.label==='work'"> -->
-        <mat-expansion-panel-header><mat-checkbox color="primary" [checked]="post.completed" (change)="onComplete(post, $event);" >
+        <mat-expansion-panel-header *ngIf="!post.completed"><mat-checkbox color="primary" [checked]="post.completed" (change)="onComplete(post, $event);" >
           {{post.title}}</mat-checkbox>
         </mat-expansion-panel-header>
         <p>Content: {{post.content}}</p>
@@ -37,7 +37,24 @@
       </mat-expansion-panel>
       </mat-accordion>
     </mat-tab>
-
+    <mat-tab label="Completed">
+      <mat-accordion multi="true" *ngIf="posts.length>0">
+      <mat-expansion-panel *ngFor="let post of posts">
+        <!-- <p>Inside</p> -->
+        <!-- <ng-template *ngIf="post.label==='work'"> -->
+        <mat-expansion-panel-header *ngIf="post.completed"><mat-checkbox color="primary" [checked]="post.completed" (click)="onComplete(post, $event);" >
+          {{post.title}}</mat-checkbox>
+        </mat-expansion-panel-header>
+        <p>Content: {{post.content}}</p>
+        <p>Duedate: {{post.duedate}}</p>
+      <!-- </ng-template> -->
+        <mat-action-row>
+          <a mat-raised-button color="accent" [routerLink]="['/edit', post.id]">Edit</a>
+          <button mat-raised-button color="warn" (click)="onDelete(post.id)">Delete</button>
+        </mat-action-row>
+      </mat-expansion-panel>
+      </mat-accordion>
+    </mat-tab>
     <mat-tab label="Work">
     <mat-accordion multi="true" *ngIf="posts.length>0">
     <mat-expansion-panel *ngFor="let post of posts">
