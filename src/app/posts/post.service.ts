@@ -73,7 +73,7 @@ export class PostService{
   // }
 
   getPost(id: string){
-    return this.http.get<{_id: string, title: string, content: string, label: string, duedate: Date, completed: boolean}>("http://localhost:3000/api/posts/label" + id);
+    return this.http.get<{_id: string, title: string, content: string, label: string, duedate: Date, completed: boolean}>("http://localhost:3000/api/posts/" + id);
   }
   // getLabel(id: string){
   //   return this.http.get<{_id: string, name: string}>("http://localhost:3000/api/labels/" + id);
@@ -105,8 +105,8 @@ export class PostService{
   //   });
 
   // }
-  updatePost(id: string, title:string, content:string, label: string, duedate: Date){
-    const post={id:id, title: title, content:content, label: label, duedate: duedate, completed:false};
+  updatePost(id: string, title:string, content:string, label: string, duedate: Date, completed: Boolean){
+    const post={id:id, title: title, content:content, label: label, duedate: duedate, completed:completed};
     this.http.put("http://localhost:3000/api/posts/" + id, post).subscribe(response=>{
       const updatedPosts= [...this.posts];
       const oldPostIndex= updatedPosts.findIndex(p => p.id===post.id);
