@@ -29,9 +29,9 @@ private postSubPersonal: Subscription;
       console.log(JSON.stringify(this.posts));
 
       if (this.datestring<this.posts[0].duedate.toString())
-      this.message="Your next task is due in "+this.posts[0].duedate;
+      this.message=this.posts[0].title+" is due in "+this.posts[0].duedate;
     else
-      this.message="Your next task is overdue from "+this.posts[0].duedate;
+      this.message=this.posts[0].title+" is overdue from "+this.posts[0].duedate;
     });
 
   }
