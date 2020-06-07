@@ -50,6 +50,10 @@ export class PostCreateComponent implements OnInit{
       return;
     }
     if(this.mode==='create'){
+      if(form.value.picker<this.minDate){
+        alert('Enter a date today or later');
+        return;
+      }
       this.postsService.addPost(form.value.title,form.value.content,form.value.label, form.value.picker, form.value.completed);
       console.log("new post: "+form.value.title+", "+form.value.label+", "+form.value.picker);
       form.resetForm();

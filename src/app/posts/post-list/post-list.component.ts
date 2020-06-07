@@ -27,11 +27,16 @@ private postSubPersonal: Subscription;
     this.postSub=this.post.getPostUpdateListener().subscribe((posts: Posts[])=>{
       this.posts=posts;
       console.log(JSON.stringify(this.posts));
-
-      if (this.datestring<this.posts[0].duedate.toString())
-      this.message=this.posts[0].title+" is due in "+this.posts[0].duedate;
-    else
-      this.message=this.posts[0].title+" is overdue from "+this.posts[0].duedate;
+      for(let i = 0; i < this.posts.length; i++){
+        console.log(i);
+        if(this.posts[i].completed.localeCompare("Completed")){
+          if (this.datestring<this.posts[i].duedate.toString())
+            this.message=this.posts[i].title+" is due in "+this.posts[i].duedate;
+          else
+            this.message=this.posts[i].title+" is overdue from "+this.posts[i].duedate;
+          break;
+        }
+      }
     });
 
   }
