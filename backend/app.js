@@ -4,7 +4,7 @@ const bodyParser= require('body-parser');
 const mongoose= require('mongoose');
 
 const Post=require('./models/post');
-const Label=require('./models/label');
+// const Label=require('./models/label');
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));
@@ -31,16 +31,16 @@ app.get("/api/posts/:id", (req,res,next)=>{
     }
   });
 });
-app.get("/api/posts/label/:label", (req,res,next)=>{
-  Post.find({label: req.params.label}).then(post=>{
-    if(post){
-      res.status(200).json(post);
-    }
-    else{
-      res.status(404).json({message: "Post not found"});
-    }
-  });
-});
+// app.get("/api/posts/label/:label", (req,res,next)=>{
+//   Post.find({label: req.params.label}).then(post=>{
+//     if(post){
+//       res.status(200).json(post);
+//     }
+//     else{
+//       res.status(404).json({message: "Post not found"});
+//     }
+//   });
+// });
 // app.get("/api/labels/:id", (req,res,next)=>{
 //   Label.findById(req.params.id).then(label=>{
 //     if(label){
@@ -108,15 +108,15 @@ app.use('/api/posts',(req,res,next)=>{
   // next();
 });
 
-app.use('/api/labels',(req,res,next)=>{
-  Label.find().then(documents=>{
-    res.status(200).json({
-      message:'Labels fetched successfully',
-      labels: documents
-    });
-  });
-  // next();
-});
+// app.use('/api/labels',(req,res,next)=>{
+//   Label.find().then(documents=>{
+//     res.status(200).json({
+//       message:'Labels fetched successfully',
+//       labels: documents
+//     });
+//   });
+//   // next();
+// });
 
 // app.delete("/api/posts/:id", (res,req,next) => {
 //   console.log(req.params.id);

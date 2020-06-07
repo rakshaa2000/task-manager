@@ -1,5 +1,5 @@
 import {Posts} from './post-model';
-import {Labels} from './label-model';
+// import {Labels} from './label-model';
 
 import { Injectable } from '@angular/core';
 import {Subject} from 'rxjs';
@@ -10,10 +10,10 @@ import { DatePipe } from '@angular/common';
 @Injectable({providedIn: "root"})
 export class PostService{
   private posts: Posts[]=[];
-  private labels: Labels[]=[];
+  // private labels: Labels[]=[];
   providers: [DatePipe]
   private postsUpdated= new Subject<Posts[]>();
-  private labelsUpdated= new Subject<Labels[]>();
+  // private labelsUpdated= new Subject<Labels[]>();
   constructor(private http: HttpClient, public datepipe: DatePipe){}
   getPosts(){
       this.http.get<{message:string,posts:any}>('http://localhost:3000/api/posts')

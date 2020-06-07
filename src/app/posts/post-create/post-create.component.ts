@@ -4,7 +4,7 @@ import { NgForm } from '@angular/forms';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import { PostService } from '../post.service';
 import { ActivatedRoute, ParamMap } from '@angular/router';
-import { Labels } from '../label-model';
+// import { Labels } from '../label-model';
 import {Subscription} from 'rxjs';
 
 @Component({
@@ -13,7 +13,7 @@ import {Subscription} from 'rxjs';
   styleUrls: ['./post-create.component.css']
 })
 export class PostCreateComponent implements OnInit{
-  labels: Labels[]=[];
+  // labels: Labels[]=[];
   enteredContent='';
   enteredTitle='';
   selected='';
