@@ -30,7 +30,7 @@ private postSubPersonal: Subscription;
       for(let i = 0; i < this.posts.length; i++){
         console.log(i);
         if(this.posts[i].completed.localeCompare("Completed")){
-          if (this.datestring<this.posts[i].duedate.toString())
+          if (this.datestring<=this.posts[i].duedate.toString())
             this.message=this.posts[i].title+" is due in "+this.posts[i].duedate;
           else
             this.message=this.posts[i].title+" is overdue from "+this.posts[i].duedate;
