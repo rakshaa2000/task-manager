@@ -21,7 +21,8 @@ export class PostCreateComponent implements OnInit{
   private postId: string;
   private labelSub: Subscription;
   post: Posts;
-  minDate= new Date();
+  oldDate= new Date();
+  minDate= new Date(this.oldDate.toDateString());
 
   constructor(public postsService: PostService, public label:PostService, public route: ActivatedRoute){}
 
@@ -50,7 +51,9 @@ export class PostCreateComponent implements OnInit{
       return;
     }
     if(this.mode==='create'){
-      if(form.value.picker<this.minDate){
+      if((form.value.picker<this.minDate)){
+        console.log(this.minDate);
+        console.log(form.value.picker);
         alert('Enter a date today or later');
         return;
       }
