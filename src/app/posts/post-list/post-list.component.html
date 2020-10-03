@@ -1,69 +1,54 @@
-
-  <mat-tab-group>
-    <mat-tab label="To-do">
-      <mat-accordion multi="true" *ngIf="posts.length>0">
-      <mat-expansion-panel *ngFor="let post of posts">
-        <!-- <p>Inside</p> -->
-        <!-- <ng-template *ngIf="post.label==='work'"> -->
-        <mat-expansion-panel-header *ngIf="post.completed!=='Completed'">
-          <mat-panel-title>{{post.title}}</mat-panel-title><mat-panel-description class="right-aligned-header"><i>{{post.completed}}</i></mat-panel-description>
-        </mat-expansion-panel-header>
-        <p>Description: {{post.content}}</p>
-        <p>Due-date: {{post.duedate}}</p>
-        <!-- <p>Completed: {{post.completed}}</p> -->
-      <!-- </ng-template> -->
-        <mat-action-row>
-          <a mat-raised-button color="accent" [routerLink]="['/edit', post.id]">Edit</a>
-          <button mat-raised-button color="warn" (click)="onDelete(post.id)">Delete</button>
-          <!-- <button mat-raised-button (click)="onComplete(post, $event)">Archive</button> -->
-        </mat-action-row>
-      </mat-expansion-panel>
-      </mat-accordion>
-    </mat-tab>
-    <mat-tab label="Completed">
-      <mat-accordion multi="true" *ngIf="posts.length>0">
-      <mat-expansion-panel *ngFor="let post of posts">
-        <!-- <p>Inside</p> -->
-        <!-- <ng-template *ngIf="post.label==='work'"> -->
-        <mat-expansion-panel-header *ngIf="post.completed==='Completed'">
-          <mat-panel-title>{{post.title}}</mat-panel-title><mat-panel-description class="right-aligned-header"><i>{{post.completed}}</i></mat-panel-description>
-        </mat-expansion-panel-header>
-        <p>Content: {{post.content}}</p>
-        <p>Due-date: {{post.duedate}}</p>
-      <!-- </ng-template> -->
-        <mat-action-row>
-          <a mat-raised-button color="accent" [routerLink]="['/edit', post.id]">Edit</a>
-          <button mat-raised-button color="warn" (click)="onDelete(post.id)">Delete</button>
-        </mat-action-row>
-      </mat-expansion-panel>
-      </mat-accordion>
-    </mat-tab>
-
-    <mat-tab label="Work">
-    <mat-accordion multi="true" *ngIf="posts.length>0">
-    <mat-expansion-panel *ngFor="let post of posts">
-    <!-- <p>Inside</p> -->
-    <!-- <ng-template *ngIf="post.label==='work'"> -->
-    <mat-expansion-panel-header *ngIf="post.label==='work'">
-      <mat-panel-title>{{post.title}}</mat-panel-title><mat-panel-description><i>{{post.completed}}</i></mat-panel-description>
-    </mat-expansion-panel-header>
-    <p>Content: {{post.content}}</p>
-    <p>Due-date: {{post.duedate}}</p>
-  <!-- </ng-template> -->
-    <mat-action-row>
-      <a mat-raised-button color="accent" [routerLink]="['/edit', post.id]">Edit</a>
-      <button mat-raised-button color="warn" (click)="onDelete(post.id)">Delete</button>
-    </mat-action-row>
-  </mat-expansion-panel>
-  </mat-accordion>
+<mat-tab-group mat-stretch-tabs class="main-tabs">
+  <mat-tab label="All">
+    <mat-tab-group class="sub-tabs">
+      <mat-tab label="To-do">
+        <mat-accordion multi="true" *ngIf="posts.length>0">
+        <mat-expansion-panel *ngFor="let post of posts">
+          <!-- <p>Inside</p> -->
+          <!-- <ng-template *ngIf="post.label==='work'"> -->
+          <mat-expansion-panel-header *ngIf="post.completed!=='Completed'">
+            <mat-panel-title>{{post.title}}</mat-panel-title><mat-panel-description class="right-aligned-header"><i>{{post.completed}}</i></mat-panel-description>
+          </mat-expansion-panel-header>
+          <p>Description: {{post.content}}</p>
+          <p>Due-date: {{post.duedate}}</p>
+          <!-- <p>Completed: {{post.completed}}</p> -->
+        <!-- </ng-template> -->
+          <mat-action-row>
+            <a mat-raised-button color="accent" [routerLink]="['/edit', post.id]">Edit</a>
+            <button mat-raised-button color="warn" (click)="onDelete(post.id)">Delete</button>
+            <!-- <button mat-raised-button (click)="onComplete(post, $event)">Archive</button> -->
+          </mat-action-row>
+        </mat-expansion-panel>
+        </mat-accordion>
+      </mat-tab>
+      <mat-tab label="Completed">
+        <mat-accordion multi="true" *ngIf="posts.length>0">
+        <mat-expansion-panel *ngFor="let post of posts">
+          <!-- <p>Inside</p> -->
+          <!-- <ng-template *ngIf="post.label==='work'"> -->
+          <mat-expansion-panel-header *ngIf="post.completed==='Completed'">
+            <mat-panel-title>{{post.title}}</mat-panel-title><mat-panel-description class="right-aligned-header"><i>{{post.completed}}</i></mat-panel-description>
+          </mat-expansion-panel-header>
+          <p>Content: {{post.content}}</p>
+          <p>Due-date: {{post.duedate}}</p>
+        <!-- </ng-template> -->
+          <mat-action-row>
+            <a mat-raised-button color="accent" [routerLink]="['/edit', post.id]">Edit</a>
+            <button mat-raised-button color="warn" (click)="onDelete(post.id)">Delete</button>
+          </mat-action-row>
+        </mat-expansion-panel>
+        </mat-accordion>
+      </mat-tab>
+    </mat-tab-group>
   </mat-tab>
-
-  <mat-tab label="Personal">
-  <mat-accordion multi="true" *ngIf="posts.length>0">
-    <mat-expansion-panel *ngFor="let post of posts">
+  <mat-tab label="Categories">
+    <mat-tab-group class="sub-tabs">
+      <mat-tab label="Work">
+      <mat-accordion multi="true" *ngIf="posts.length>0">
+      <mat-expansion-panel *ngFor="let post of posts">
       <!-- <p>Inside</p> -->
       <!-- <ng-template *ngIf="post.label==='work'"> -->
-      <mat-expansion-panel-header *ngIf="post.label==='personal'">
+      <mat-expansion-panel-header *ngIf="post.label==='work'">
         <mat-panel-title>{{post.title}}</mat-panel-title><mat-panel-description><i>{{post.completed}}</i></mat-panel-description>
       </mat-expansion-panel-header>
       <p>Content: {{post.content}}</p>
@@ -75,14 +60,14 @@
       </mat-action-row>
     </mat-expansion-panel>
     </mat-accordion>
-  </mat-tab>
-
-    <mat-tab label="Shopping">
+    </mat-tab>
+  
+    <mat-tab label="Personal">
     <mat-accordion multi="true" *ngIf="posts.length>0">
       <mat-expansion-panel *ngFor="let post of posts">
         <!-- <p>Inside</p> -->
         <!-- <ng-template *ngIf="post.label==='work'"> -->
-        <mat-expansion-panel-header *ngIf="post.label==='shopping' ">
+        <mat-expansion-panel-header *ngIf="post.label==='personal'">
           <mat-panel-title>{{post.title}}</mat-panel-title><mat-panel-description><i>{{post.completed}}</i></mat-panel-description>
         </mat-expansion-panel-header>
         <p>Content: {{post.content}}</p>
@@ -95,26 +80,48 @@
       </mat-expansion-panel>
       </mat-accordion>
     </mat-tab>
-
-      <mat-tab label="Others">
+  
+      <mat-tab label="Shopping">
       <mat-accordion multi="true" *ngIf="posts.length>0">
-      <mat-expansion-panel *ngFor="let post of posts">
-        <!-- <p>Inside</p> -->
-        <!-- <ng-template *ngIf="post.label==='work'"> -->
-        <mat-expansion-panel-header *ngIf="post.label==='others'">
-          <mat-panel-title>{{post.title}}</mat-panel-title><mat-panel-description><i>{{post.completed}}</i></mat-panel-description>
-        </mat-expansion-panel-header>
-        <p>Content: {{post.content}}</p>
-        <p>Due-date: {{post.duedate}}</p>
-      <!-- </ng-template> -->
-        <mat-action-row>
-          <a mat-raised-button color="accent" [routerLink]="['/edit', post.id]">Edit</a>
-          <button mat-raised-button color="warn" (click)="onDelete(post.id)">Delete</button>
-        </mat-action-row>
-      </mat-expansion-panel>
-      </mat-accordion>
-    </mat-tab>
-  </mat-tab-group>
+        <mat-expansion-panel *ngFor="let post of posts">
+          <!-- <p>Inside</p> -->
+          <!-- <ng-template *ngIf="post.label==='work'"> -->
+          <mat-expansion-panel-header *ngIf="post.label==='shopping' ">
+            <mat-panel-title>{{post.title}}</mat-panel-title><mat-panel-description><i>{{post.completed}}</i></mat-panel-description>
+          </mat-expansion-panel-header>
+          <p>Content: {{post.content}}</p>
+          <p>Due-date: {{post.duedate}}</p>
+        <!-- </ng-template> -->
+          <mat-action-row>
+            <a mat-raised-button color="accent" [routerLink]="['/edit', post.id]">Edit</a>
+            <button mat-raised-button color="warn" (click)="onDelete(post.id)">Delete</button>
+          </mat-action-row>
+        </mat-expansion-panel>
+        </mat-accordion>
+      </mat-tab>
+  
+        <mat-tab label="Others">
+        <mat-accordion multi="true" *ngIf="posts.length>0">
+        <mat-expansion-panel *ngFor="let post of posts">
+          <!-- <p>Inside</p> -->
+          <!-- <ng-template *ngIf="post.label==='work'"> -->
+          <mat-expansion-panel-header *ngIf="post.label==='others'">
+            <mat-panel-title>{{post.title}}</mat-panel-title><mat-panel-description><i>{{post.completed}}</i></mat-panel-description>
+          </mat-expansion-panel-header>
+          <p>Content: {{post.content}}</p>
+          <p>Due-date: {{post.duedate}}</p>
+        <!-- </ng-template> -->
+          <mat-action-row>
+            <a mat-raised-button color="accent" [routerLink]="['/edit', post.id]">Edit</a>
+            <button mat-raised-button color="warn" (click)="onDelete(post.id)">Delete</button>
+          </mat-action-row>
+        </mat-expansion-panel>
+        </mat-accordion>
+      </mat-tab>
+    </mat-tab-group>
+
+  </mat-tab>
+</mat-tab-group>
 
 <p *ngIf="posts.length<=0" class="info-text mat-body-1">No posts added yet!</p>
 <p class="mat-body-2" style="color: white;">Hi! {{message}}</p>

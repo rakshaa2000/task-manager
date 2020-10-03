@@ -5,6 +5,12 @@
 .info-text{
   text-align: center;
 }
+.main-tabs{
+  background-color:#6600cc;
+}
+.sub-tabs{
+  background-color: mediumpurple;
+}
 /* .mat-tab-labels, .mat-tab-label, .mat-tab-link {
   color: white;
   font-size: 16px;
